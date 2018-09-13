@@ -5,8 +5,9 @@ Convert "bind camera to marker" to Sequencer scene-strips in the Blender Video S
 
 Install the add-on: https://github.com/tin2tin/Camera-Markers-to-Scene-Strips/raw/master/CameraMarkersToSceneStrips.py 
 
-Have the cameras bind-to-markers in the same scene.
+Have the Cameras and bind-to-Markers in the same Scene as the Sequencer.
 
-VSE strip editor > Header Menu > Add: Marker Cameras
+Select: VSE strip editor > Header Menu > Add: Marker Cameras
 
 And your cameras will show up as Scene Strips in the Sequencer.
+
