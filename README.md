@@ -11,3 +11,6 @@ Select: VSE strip editor > Header Menu > Add: Marker Cameras
 
 And your cameras will show up as Scene Strips in the Sequencer.
 
+Tutorial video: https://www.youtube.com/watch?v=HhSEV8aBnGg
+
+
