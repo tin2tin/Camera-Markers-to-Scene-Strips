@@ -4,19 +4,19 @@
 
 bl_info = {
 	"name": "Camera Markers to Scene Strips",
-	"description": "Converts Camera Markers to Scene Strips",
+	"description": "Converts Camera Bind-To-Markers to Scene Strips",
 	"author": "tintwotin",
 	"version": (1, 1),
 	"blender": (2, 7, 9),
 	"location": "VSE strip editor > Header > Add Menu: Marker Cameras",
-	"wiki_url": "",
+	"wiki_url": "https://github.com/tin2tin/Camera-Markers-to-Scene-Strips/wiki",
 	"tracker_url":"",
 	"category": "Sequencer"}
 
 import bpy
 
 class SEQUENCE_OT_convert_cameras(bpy.types.Operator):
-	"""Converts Camera Markers to Scene Strips"""
+	"""Converts Camera Bind-To-Markers to Scene Strips"""
 	bl_label = "Marker Cams"
 	bl_idname = "sequencer.convert_cameras"
 	bl_options = {'REGISTER', 'UNDO'}
