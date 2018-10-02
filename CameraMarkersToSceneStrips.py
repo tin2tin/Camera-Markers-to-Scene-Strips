@@ -48,7 +48,7 @@ class SEQUENCE_OT_convert_cameras(bpy.types.Operator):
 			if cnt<len(marker_camera)-1: # add out frame
 				addSceneOut = marker_frame[cnt+1]
 			else:    
-				addSceneOut = bpy.context.scene.frame_end #last clip extented to end of range
+				addSceneOut = bpy.context.scene.frame_end+1 #last clip extented to end of range
 
 			addSceneChannel = 1          # attempt to add in this channel - if full strips will be moved upwards
 			addSceneTlStart = cf		
