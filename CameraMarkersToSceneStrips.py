@@ -68,12 +68,12 @@ class SEQUENCE_OT_convert_cameras(bpy.types.Operator):
             newScene=bpy.context.scene.sequence_editor.sequences_all[newScene.name]
             #newScene.scene_camera = bpy.data.objects[marker_camera[cnt]]
             newScene.animation_offset_start = addSceneIn
-            newScene.frame_final_end = addSceneOut-60# make it shorter
+            newScene.frame_final_end = addSceneOut
             newScene.frame_start = cf  
             cnt+=1
             
             # Hack: remove the extra frame again of the preview area.             
-            bpy.context.scene.frame_end=bpy.context.scene.frame_end-1 -60
+            bpy.context.scene.frame_end=bpy.context.scene.frame_end-1
 
         return {'FINISHED'}
 
