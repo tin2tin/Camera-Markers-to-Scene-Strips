@@ -5,7 +5,7 @@ bl_info = {
     "name": "Camera Markers to Scene Strips",
     "description": "Converts Camera Bind-To-Markers to Scene Strips",
     "author": "tintwotin",
-    "version": (1, 1),
+    "version": (1, 2),
     "blender": (2, 7, 9),
     "location": "VSE strip editor > Header > Add Menu: Marker Cameras",
     "wiki_url": "https://github.com/tin2tin/Camera-Markers-to-Scene-Strips/wiki",
@@ -35,19 +35,17 @@ class SEQUENCE_OT_convert_cameras(bpy.types.Operator):
         for marker in scene.timeline_markers: #find the cameras and their frame
 
             if marker.camera:   
-                cam_marker.insert(cnt,[marker.frame, mi[cnt][0]])                           
-                marker_camera.append(marker.camera.name)
-                marker_frame.append(marker.frame)
-                marker_name.append(mi[cnt][0])
-            cnt+=1    
+                cam_marker.insert(cnt,[marker.frame, marker.camera.name])#mi[cnt][0]])                           
+                cnt+=1    
 
-        if len(marker_camera)==0:         # cancel if no cameras
+        if len(cam_marker)==0:         # cancel if no cameras
             return {'CANCELLED'}
 
-        cnt=0
         cam_marker=sorted(cam_marker,key=lambda mark: mark[0]) # Sort the markers after frame nr.
-        
-        for i in cam_marker:           #add cameras to sequencer          
+
+        #add cameras to sequencer
+        cnt=0 # counter        
+        for i in cam_marker:                     
             cf = cam_marker[cnt][0]
             addSceneIn = cf
 
@@ -65,13 +63,13 @@ class SEQUENCE_OT_convert_cameras(bpy.types.Operator):
             
             # add scene strip in current scene at in and out frame numbers
             newScene=bpy.context.scene.sequence_editor.sequences.new_scene(cam_marker[cnt][1], bpy.context.scene, addSceneChannel, addSceneTlStart)
+            newScene.scene_camera = bpy.data.objects[cam_marker[cnt][1]]
             newScene=bpy.context.scene.sequence_editor.sequences_all[newScene.name]
-            #newScene.scene_camera = bpy.data.objects[marker_camera[cnt]]
             newScene.animation_offset_start = addSceneIn
             newScene.frame_final_end = addSceneOut
             newScene.frame_start = cf  
             cnt+=1
-            
+
             # Hack: remove the extra frame again of the preview area.             
             bpy.context.scene.frame_end=bpy.context.scene.frame_end-1
 
